@@ -1,0 +1,66 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Calculator Suite">
+
+    <test name="Long Numbers + - * / Calculator Tests Package" parallel="tests" thread-count="16">
+        <classes>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.SumLongCalculatorTest"/>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.SubtractionLongCalculatorTest"/>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.MultiplicationLongCalculatorTest"/>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.DivisionLongCalculatorTest"/>
+        </classes>
+
+    </test>
+
+    <test name="Double Numbers  + - * / ^ sqrt() Calculator Tests Package">
+        <packages>
+            <package name="com.epam.training.automation.tests.testng.doublenumbers"/>
+        </packages>
+    </test>
+
+    <test name="Trigonometry Calculator Tests Package">
+        <groups>
+            <dependencies>
+                <group name="tangent" depends-on="sineCosine"/>
+            </dependencies>
+        </groups>
+        <packages>
+            <package name="com.epam.training.automation.tests.testng.trigonometry"/>
+        </packages>
+    </test>
+
+    <test name="Positivity of Number Calculator Test">
+
+        <parameter name="valueIsTrulyPositive" value="9223372036854775807"/>
+        <parameter name="valueIsTrulyNegative" value="-9223372036854775808"/>
+        <parameter name="valueIsZero" value="0"/>
+
+        <groups>
+            <dependencies>
+                <group name="determineTheSign" depends-on="smoke"/>
+            </dependencies>
+        </groups>
+
+        <classes>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.PositivityOfNumberCalculatorTest"/>
+        </classes>
+
+    </test>
+
+    <test name="Negativity of Number Calculator Test">
+
+        <parameter name="valueIsTrulyPositive" value="9223372036854775807"/>
+        <parameter name="valueIsTrulyNegative" value="-9223372036854775808"/>
+        <parameter name="valueIsZero" value="0"/>
+
+        <groups>
+            <dependencies>
+                <group name="determineTheSign" depends-on="smoke"/>
+            </dependencies>
+        </groups>
+
+        <classes>
+            <class name="com.epam.training.automation.tests.testng.longnumbers.NegativityOfNumberCalculatorTest"/>
+        </classes>
+
+    </test>
+</suite>
